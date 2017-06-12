@@ -25,20 +25,20 @@ public class ScriptsToCode {
         gotoProjectsList();
         selectProject();
         gotoBugTracker();
-        //создание карточки теперь тоже параметризированное
-        createCardOnTracker("карточка 3", "описание карточки 3");
+        //а тут не просто параметр, а сразу инициализация объекта класса карточка с данными
+        createCardOnTracker(new CardData("карточка 3", "описание карточки 3"));
 
     }
 
-    public void createCardOnTracker(String cardName, String cardDescription) {
+    public void createCardOnTracker(CardData cardData) {
         //создаем карточку
         wd.findElement(By.linkText("Создать карточку")).click();
         //название карточки
         wd.findElement(By.id("issue_summary")).click();
-        wd.findElement(By.id("issue_summary")).sendKeys(cardName);
+        wd.findElement(By.id("issue_summary")).sendKeys(cardData.getCardName());
         //описание карточки
         wd.findElement(By.id("issue_description")).click();
-        wd.findElement(By.id("issue_description")).sendKeys(cardDescription);
+        wd.findElement(By.id("issue_description")).sendKeys(cardData.getCardDescription());
         //выбираем тип и приоритет
         /*
         *пока спрячем, потому что добраться тяжело
