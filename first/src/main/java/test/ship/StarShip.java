@@ -16,6 +16,10 @@ public class StarShip {
         this.shipHeight = shipHeight;
     }
 
+    public double getStarShipHeight () {
+        return this.shipHeight;
+    }
+
 
 
 }
