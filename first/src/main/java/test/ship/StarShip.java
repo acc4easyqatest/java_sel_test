@@ -11,6 +11,11 @@ public class StarShip {
 
     public double shipHeight;
 
+    //добавляем конструктор
+    public StarShip(double height){
+        shipHeight = height;
+    }
+
 
 
 }

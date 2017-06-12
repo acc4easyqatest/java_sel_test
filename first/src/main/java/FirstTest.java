@@ -3,11 +3,8 @@ import test.ship.StarShip;
 public class FirstTest {
 	
 	public static void main (String[] args) {
-		//создаем экземпляр класса StarShip
-		StarShip ship = new StarShip();
-
-		//задаем этому экземпляру конкретное свойство
-		ship.shipHeight = 253.25;
+		//создаем экземпляр класса StarShip с высотой
+		StarShip ship = new StarShip(253.25);
 
 		//вызываем метод, который нам все о корабле расскажет
 		displayHeight(ship);
