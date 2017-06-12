@@ -25,27 +25,15 @@ public class ScriptsToCode {
     
     @Test
     public void ScriptsToCode() {
-        wd.get("https://app.geteasyqa.com/users/sign_in");
-        //вводим емейл
-        wd.findElement(By.id("user_email")).click();
-        wd.findElement(By.id("user_email")).sendKeys("acc4easyqatest@gmail.com");
+        userLogin();
+        gotoProjectsList();
+        selectProject();
+        gotoBugTracker();
+        createCardOnTracker();
 
-        //вводим пароль
-        wd.findElement(By.id("user_password")).click();
-        wd.findElement(By.id("user_password")).sendKeys("acc4easyqatestQwe");
+    }
 
-        //нажимаем на кнопку войти
-        wd.findElement(By.name("commit")).click();
-
-        //кликаем по списку проектов
-        wd.findElement(By.linkText("Мои Проекты")).click();
-
-        //кликаем по проекту
-        wd.findElement(By.linkText("test project 1")).click();
-
-        //кликаем по баг-трекеру
-        wd.findElement(By.linkText("Баг Трекер")).click();
-
+    public void createCardOnTracker() {
         //создаем карточку
         wd.findElement(By.linkText("Создать карточку")).click();
         //название карточки
@@ -64,7 +52,35 @@ public class ScriptsToCode {
         */
         //сохраняем
         wd.findElement(By.name("commit")).click();
+    }
 
+    public void gotoBugTracker() {
+        //кликаем по баг-трекеру
+        wd.findElement(By.linkText("Баг Трекер")).click();
+    }
+
+    public void selectProject() {
+        //кликаем по проекту
+        wd.findElement(By.linkText("test project 1")).click();
+    }
+
+    public void gotoProjectsList() {
+        //кликаем по списку проектов
+        wd.findElement(By.linkText("Мои Проекты")).click();
+    }
+
+    public void userLogin() {
+        wd.get("https://app.geteasyqa.com/users/sign_in");
+        //вводим емейл
+        wd.findElement(By.id("user_email")).click();
+        wd.findElement(By.id("user_email")).sendKeys("acc4easyqatest@gmail.com");
+
+        //вводим пароль
+        wd.findElement(By.id("user_password")).click();
+        wd.findElement(By.id("user_password")).sendKeys("acc4easyqatestQwe");
+
+        //нажимаем на кнопку войти
+        wd.findElement(By.name("commit")).click();
     }
 
     @AfterMethod
