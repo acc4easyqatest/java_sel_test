@@ -4,6 +4,14 @@
     <bytecodeTargetLevel>
       <module name="first_main" target="1.8" />
       <module name="first_test" target="1.8" />
+      <module name="script-change_main" target="1.8" />
+      <module name="script-change_test" target="1.8" />
+      <module name="script-to-code_main" target="1.8" />
+      <module name="script-to-code_test" target="1.8" />
+      <module name="script-to-test_main" target="1.8" />
+      <module name="script-to-test_test" target="1.8" />
+      <module name="script1_main" target="1.8" />
+      <module name="script1_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

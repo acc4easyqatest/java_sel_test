@@ -5,6 +5,13 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/first.iml" filepath="$PROJECT_DIR$/.idea/modules/first.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/first_main.iml" filepath="$PROJECT_DIR$/.idea/modules/first_main.iml" group="first" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/first_test.iml" filepath="$PROJECT_DIR$/.idea/modules/first_test.iml" group="first" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/script-change_main.iml" filepath="$PROJECT_DIR$/.idea/modules/script-change_main.iml" group="script-change" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/script-change_test.iml" filepath="$PROJECT_DIR$/.idea/modules/script-change_test.iml" group="script-change" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/script-to-code.iml" filepath="$PROJECT_DIR$/.idea/modules/script-to-code.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/script-to-code_main.iml" filepath="$PROJECT_DIR$/.idea/modules/script-to-code_main.iml" group="script-to-code" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/script-to-code_test.iml" filepath="$PROJECT_DIR$/.idea/modules/script-to-code_test.iml" group="script-to-code" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/script-to-test_main.iml" filepath="$PROJECT_DIR$/.idea/modules/script-to-test_main.iml" group="script-to-test" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/script-to-test_test.iml" filepath="$PROJECT_DIR$/.idea/modules/script-to-test_test.iml" group="script-to-test" />
     </modules>
   </component>
 </project>
