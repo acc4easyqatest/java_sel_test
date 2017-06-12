@@ -9,5 +9,9 @@ public class FirstTest {
 		System.out.println (8 / 3);
 
 		System.out.println (8.0 / 3);
+
+		/*переменные и значения*/
+		int side = 7;
+		System.out.println ("Площадь квадрата со стороной " + side + " = " + (side*side));
 	}
 }
