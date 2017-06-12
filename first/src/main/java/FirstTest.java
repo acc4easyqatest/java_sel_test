@@ -1,23 +1,24 @@
+import test.ship.StarShip;
+
 public class FirstTest {
 	
 	public static void main (String[] args) {
-		helloTest();
-		helloTest("username");
-		System.out.println (helloTest("значение 1", "значение 2"));
+		//создаем экземпляр класса StarShip
+		StarShip ship = new StarShip();
+
+		//задаем этому экземпляру конкретное свойство
+		ship.shipHeight = 253.25;
+
+		//вызываем метод, который нам все о корабле расскажет
+		displayHeight(ship);
 
 	}
-
-	/*демо методов*/
-	//метод без параметров
-	public static void helloTest () {
-		System.out.println ("We are here! Hello! ");
+	public static void displayHeight(StarShip littleShip){
+		System.out.println ("Высота корабля составляет : " + getStarShipHeight(littleShip) + " метров" );
 	}
-	//метод с параметром
-	public static void helloTest (String value) {
-		System.out.println ("We are here! Hello! " + value);
-	}
-	//метод с возвратом значения
-	public static String helloTest (String value1, String value2 ) {
-		return "We are here! Hello! " + value1 + " " + value2;
+	/*демо обращения к атрибуту  класса*/
+	//выведем высоту пирамиды
+	public static double getStarShipHeight (StarShip littleShip) {
+		return littleShip.shipHeight;
 	}
 }
