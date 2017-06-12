@@ -12,8 +12,8 @@ public class StarShip {
     public double shipHeight;
 
     //добавляем конструктор
-    public StarShip(double height){
-        shipHeight = height;
+    public StarShip(double shipHeight){
+        this.shipHeight = shipHeight;
     }
 
 
