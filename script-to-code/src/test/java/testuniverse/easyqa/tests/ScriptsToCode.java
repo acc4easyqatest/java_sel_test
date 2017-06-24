@@ -33,57 +33,62 @@ public class ScriptsToCode {
 
     public void createCardOnTracker(CardData cardData) {
         //создаем карточку
-        wd.findElement(By.linkText("Создать карточку")).click();
+        clickOnLink("Создать карточку");
         //название карточки
-        wd.findElement(By.id("issue_summary")).click();
-        wd.findElement(By.id("issue_summary")).sendKeys(cardData.getCardName());
+        typeTextIntoElement("issue_summary", cardData.getCardName());
         //описание карточки
-        wd.findElement(By.id("issue_description")).click();
-        wd.findElement(By.id("issue_description")).sendKeys(cardData.getCardDescription());
+        typeTextIntoElement("issue_description", cardData.getCardDescription());
+
         //выбираем тип и приоритет
+        clickAtSelectItem("issue_priority", "Высокий");
+        clickAtSelectItem("type-view", "Задание");
 
-        WebElement selectPriority = new RemoteWebElement();
-        selectPriority = wd.findElement(By.id("issue_priority"));
-        selectPriority.click();
-        selectPriority.findElement(By.linkText("Высокий")).click();
-
-        WebElement selectTaskType = new RemoteWebElement();
-        selectTaskType = wd.findElement(By.id("type-view"));
-        selectTaskType.click();
-        selectTaskType.findElement(By.linkText("Задание")).click();
-        
         //сохраняем
         wd.findElement(By.name("commit")).click();
     }
 
+    public void clickAtSelectItem(String selectId, String selectItem) {
+        WebElement selectList = new RemoteWebElement();
+        selectList = wd.findElement(By.id(selectId));
+        selectList.click();
+        selectList.findElement(By.linkText(selectItem)).click();
+    }
+
     public void gotoBugTracker() {
         //кликаем по баг-трекеру
-        wd.findElement(By.linkText("Баг Трекер")).click();
+        clickOnLink("Баг Трекер");
     }
 
     public void selectProject() {
         //кликаем по проекту
-        wd.findElement(By.linkText("test project 1")).click();
+        clickOnLink("test project 1");
+    }
+
+    public void clickOnLink(String linkText) {
+        wd.findElement(By.linkText(linkText)).click();
     }
 
     public void gotoProjectsList() {
         //кликаем по списку проектов
-        wd.findElement(By.linkText("Мои Проекты")).click();
+        clickOnLink("Мои Проекты");
     }
 
     public void userLogin(String userLogin, String userPassword) {
 
         wd.get("https://app.geteasyqa.com/users/sign_in");
         //вводим емейл
-        wd.findElement(By.id("user_email")).click();
-        wd.findElement(By.id("user_email")).sendKeys(userLogin);
+        typeTextIntoElement("user_email", userLogin);
 
         //вводим пароль
-        wd.findElement(By.id("user_password")).click();
-        wd.findElement(By.id("user_password")).sendKeys(userPassword);
+        typeTextIntoElement("user_password", userPassword);
 
         //нажимаем на кнопку войти
         wd.findElement(By.name("commit")).click();
+    }
+
+    public void typeTextIntoElement(String inputElementId, String textToInput) {
+        wd.findElement(By.id(inputElementId)).click();
+        wd.findElement(By.id(inputElementId)).sendKeys(textToInput);
     }
 
     @AfterMethod
