@@ -1,5 +1,6 @@
 package testuniverse.easyqa.tests;
 
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
@@ -40,13 +41,17 @@ public class ScriptsToCode {
         wd.findElement(By.id("issue_description")).click();
         wd.findElement(By.id("issue_description")).sendKeys(cardData.getCardDescription());
         //выбираем тип и приоритет
-        /*
-        *пока спрячем, потому что добраться тяжело
-        wd.findElement(By.linkText("Ошибка")).click();
-        wd.findElement(By.xpath("//div[@id='mCSB_11_container']//label[.='Ошибка']")).click();
-        wd.findElement(By.linkText("Средний")).click();
-        wd.findElement(By.linkText("Критический")).click();
-        */
+
+        WebElement selectPriority = new RemoteWebElement();
+        selectPriority = wd.findElement(By.id("issue_priority"));
+        selectPriority.click();
+        selectPriority.findElement(By.linkText("Высокий")).click();
+
+        WebElement selectTaskType = new RemoteWebElement();
+        selectTaskType = wd.findElement(By.id("type-view"));
+        selectTaskType.click();
+        selectTaskType.findElement(By.linkText("Задание")).click();
+        
         //сохраняем
         wd.findElement(By.name("commit")).click();
     }
