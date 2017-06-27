@@ -1,5 +1,6 @@
 package testuniverse.easyqa.tests;
 
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
@@ -8,14 +9,27 @@ import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.opera.OperaDriver;
+
 import org.openqa.selenium.*;
 
 public class ScriptsToCode {
-    FirefoxDriver wd;
+   // FirefoxDriver wd;
+    ChromeDriver wd;
+    ChromeOptions o;
     
     @BeforeMethod
     public void setUp() throws Exception {
-        wd = new FirefoxDriver();
+        //wd = new FirefoxDriver();
+
+        o = new ChromeOptions();
+        o.addArguments("--window-size=1800,1000");
+        wd = new ChromeDriver(o);
+
+        //wd = new InternetExplorerDriver();
+        //wd = new OperaDriver();
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     }
     
