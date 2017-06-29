@@ -23,21 +23,23 @@ public class ScriptsToCode {
     ChromeDriver wd;
     ChromeOptions o;
     RemoteWebDriver rd;
-    
+
     @BeforeMethod
     public void setUp() throws Exception {
 
         URL server = new URL("http://192.168.88.247:4444/wd/hub");
+        URL cloudServer = new URL("http://acc4universetest:a5fea81d-875f-462b-b02c-a95681f41637@ondemand.saucelabs.com:80/wd/hub");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setBrowserName("firefox");
+        capabilities.setVersion("48");
 
-        rd = new RemoteWebDriver(server,capabilities);
+        rd = new RemoteWebDriver(cloudServer,capabilities);
 
         rd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         rd.manage().window().maximize();
     }
-    
+
     @Test
     public void ScriptsToCode() {
         //вызываем логин с переданным паролем и логином
