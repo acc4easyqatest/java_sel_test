@@ -1,11 +1,14 @@
 package testuniverse.easyqa.tests;
 
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -19,18 +22,20 @@ public class ScriptsToCode {
    // FirefoxDriver wd;
     ChromeDriver wd;
     ChromeOptions o;
+    RemoteWebDriver rd;
     
     @BeforeMethod
     public void setUp() throws Exception {
-        //wd = new FirefoxDriver();
 
-        o = new ChromeOptions();
-        o.addArguments("--window-size=1800,1000");
-        wd = new ChromeDriver(o);
+        URL server = new URL("http://192.168.88.247:4444/wd/hub");
 
-        //wd = new InternetExplorerDriver();
-        //wd = new OperaDriver();
-        wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setBrowserName("firefox");
+
+        rd = new RemoteWebDriver(server,capabilities);
+
+        rd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        rd.manage().window().maximize();
     }
     
     @Test
@@ -58,12 +63,12 @@ public class ScriptsToCode {
         clickAtSelectItem("type-view", "Задание");
 
         //сохраняем
-        wd.findElement(By.name("commit")).click();
+        rd.findElement(By.name("commit")).click();
     }
 
     public void clickAtSelectItem(String selectId, String selectItem) {
         WebElement selectList = new RemoteWebElement();
-        selectList = wd.findElement(By.id(selectId));
+        selectList = rd.findElement(By.id(selectId));
         selectList.click();
         selectList.findElement(By.linkText(selectItem)).click();
     }
@@ -79,7 +84,7 @@ public class ScriptsToCode {
     }
 
     public void clickOnLink(String linkText) {
-        wd.findElement(By.linkText(linkText)).click();
+        rd.findElement(By.linkText(linkText)).click();
     }
 
     public void gotoProjectsList() {
@@ -89,7 +94,8 @@ public class ScriptsToCode {
 
     public void userLogin(String userLogin, String userPassword) {
 
-        wd.get("https://app.geteasyqa.com/users/sign_in");
+        rd.get("https://app.geteasyqa.com/users/sign_in");
+
         //вводим емейл
         typeTextIntoElement("user_email", userLogin);
 
@@ -97,17 +103,17 @@ public class ScriptsToCode {
         typeTextIntoElement("user_password", userPassword);
 
         //нажимаем на кнопку войти
-        wd.findElement(By.name("commit")).click();
+        rd.findElement(By.name("commit")).click();
     }
 
     public void typeTextIntoElement(String inputElementId, String textToInput) {
-        wd.findElement(By.id(inputElementId)).click();
-        wd.findElement(By.id(inputElementId)).sendKeys(textToInput);
+        rd.findElement(By.id(inputElementId)).click();
+        rd.findElement(By.id(inputElementId)).sendKeys(textToInput);
     }
 
     @AfterMethod
     public void tearDown() {
-        wd.quit();
+        rd.quit();
     }
     
     public static boolean isAlertPresent(FirefoxDriver wd) {
