@@ -8,11 +8,11 @@ public class ScriptsToCode extends TestBase {
     @Test
     public void testCardCreation() {
 
-        gotoProjectsList();
-        selectProject();
-        gotoBugTracker();
+        app.gotoProjectsList();
+        app.selectProject();
+        app.gotoBugTracker();
         //а тут не просто параметр, а сразу инициализация объекта класса карточка с данными
-        createCardOnTracker(new CardData("карточка 3", "описание карточки 3"));
+        app.createCardOnTracker(new CardData("карточка 3", "описание карточки 3"));
 
     }
 
