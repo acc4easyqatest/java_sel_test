@@ -1,7 +1,8 @@
-package testuniverse.easyqa.tests;
+package testuniverse.easyqa.tests.tests;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import testuniverse.easyqa.tests.appManager.ApplicationManager;
 
 
 public class TestBase {

@@ -1,4 +1,4 @@
-package testuniverse.easyqa.tests;
+package testuniverse.easyqa.tests.appManager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
@@ -9,6 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.RemoteWebElement;
+import testuniverse.easyqa.tests.objectModels.CardData;
 
 import java.net.MalformedURLException;
 import java.net.URL;

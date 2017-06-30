@@ -1,4 +1,4 @@
-package testuniverse.easyqa.tests;
+package testuniverse.easyqa.tests.objectModels;
 
 public class CardData {
     private final String cardName;

@@ -1,6 +1,7 @@
-package testuniverse.easyqa.tests;
+package testuniverse.easyqa.tests.tests;
 
 import org.testng.annotations.Test;
+import testuniverse.easyqa.tests.objectModels.CardData;
 
 
 public class ScriptsToCode extends TestBase {
