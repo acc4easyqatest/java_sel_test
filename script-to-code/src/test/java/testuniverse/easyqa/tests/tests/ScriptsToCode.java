@@ -9,11 +9,11 @@ public class ScriptsToCode extends TestBase {
     @Test
     public void testCardCreation() {
 
-        app.gotoProjectsList();
+        app.getNavHelper().gotoProjectsList();
         app.selectProject();
-        app.gotoBugTracker();
+        app.getNavHelper().gotoBugTracker();
         //а тут не просто параметр, а сразу инициализация объекта класса карточка с данными
-        app.createCardOnTracker(new CardData("карточка 3", "описание карточки 3"));
+        app.getCardHelper().createCardOnTracker(new CardData("карточка 3", "описание карточки 3"));
 
     }
 
