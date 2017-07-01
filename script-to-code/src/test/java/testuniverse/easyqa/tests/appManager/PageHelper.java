@@ -2,14 +2,15 @@ package testuniverse.easyqa.tests.appManager;
 
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.RemoteWebElement;
 
 public class PageHelper {
-    private RemoteWebDriver rd;
+    private WebDriver rd;
 
-    public PageHelper(RemoteWebDriver rd) {
+    public PageHelper(WebDriver rd) {
         this.rd =rd;
     }
 

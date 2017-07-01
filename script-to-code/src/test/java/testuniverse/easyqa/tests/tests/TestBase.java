@@ -7,7 +7,7 @@ import testuniverse.easyqa.tests.appManager.ApplicationManager;
 
 public class TestBase {
 
-    protected final ApplicationManager app = new ApplicationManager();
+    protected static ApplicationManager app = new ApplicationManager();
 
     @BeforeMethod
     public void setUp() throws Exception {

@@ -2,14 +2,15 @@ package testuniverse.easyqa.tests.appManager;
 
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import testuniverse.easyqa.tests.objectModels.CardData;
 
 public class CardHelper {
     private PageHelper pageHelper;
-    private RemoteWebDriver rd;
+    private WebDriver rd;
 
-    public CardHelper(RemoteWebDriver rd) {
+    public CardHelper(WebDriver rd) {
         this.rd = rd;
         pageHelper = new PageHelper(rd);
     }

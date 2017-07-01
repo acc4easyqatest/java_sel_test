@@ -1,5 +1,6 @@
 package testuniverse.easyqa.tests.appManager;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 /**
@@ -7,8 +8,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
  */
 public class NavHelper {
     private PageHelper pageHelper;
-    private RemoteWebDriver rd;
-    public NavHelper(RemoteWebDriver rd) {
+    private WebDriver rd;
+    public NavHelper(WebDriver rd) {
         this.rd = rd;
         pageHelper = new PageHelper(rd);
     }
