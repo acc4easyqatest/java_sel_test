@@ -3,29 +3,25 @@ package testuniverse.easyqa.tests.appManager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import testuniverse.easyqa.tests.objectModels.CardData;
 
-public class CardHelper {
-    private PageHelper pageHelper;
-    private WebDriver rd;
+public class CardHelper extends BaseHelper {
 
     public CardHelper(WebDriver rd) {
-        this.rd = rd;
-        pageHelper = new PageHelper(rd);
+        super(rd);
     }
 
     public void createCardOnTracker(CardData cardData) {
         //создаем карточку
         initCardCreation();
         //название карточки
-        pageHelper.typeTextIntoElement("issue_summary", cardData.getCardName());
+        typeTextIntoElement("issue_summary", cardData.getCardName());
         //описание карточки
-        pageHelper.typeTextIntoElement("issue_description", cardData.getCardDescription());
+        typeTextIntoElement("issue_description", cardData.getCardDescription());
 
         //выбираем тип и приоритет
-        pageHelper.clickAtSelectItem("issue_priority", "Высокий");
-        pageHelper.clickAtSelectItem("type-view", "Задание");
+        clickAtSelectItem("issue_priority", "Высокий");
+        clickAtSelectItem("type-view", "Задание");
 
         //сохраняем
         rd.findElement(By.name("commit")).click();
@@ -33,6 +29,6 @@ public class CardHelper {
 
     public void initCardCreation() {
         //создаем карточку
-        pageHelper.clickOnLink("Создать карточку");
+        clickOnLink("Создать карточку");
     }
 }

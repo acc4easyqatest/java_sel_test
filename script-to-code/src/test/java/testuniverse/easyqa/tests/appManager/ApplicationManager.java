@@ -1,7 +1,5 @@
 package testuniverse.easyqa.tests.appManager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -9,36 +7,31 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import testuniverse.easyqa.tests.objectModels.CardData;
 
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
     private  SessionHelper sessionHelper;
     private NavHelper navHelper;
-    private PageHelper pageHelper;
     private CardHelper cardHelper;
-    //private RemoteWebDriver rd;
 
     WebDriver rd;
     ChromeOptions co;
     FirefoxProfile fp;
+    private String browser;
 
+    public ApplicationManager(String browser) {
 
-    public static boolean isAlertPresent(FirefoxDriver wd) {
-        try {
-            wd.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
+        this.browser = browser;
     }
 
-    public void init() throws MalformedURLException {
+    /*public ApplicationManager(String browser) {
+
+        this.browser = browser;
+    }*/
+
+    public void init() throws MalformedURLException, InterruptedException {
 
         String browser = BrowserType.CHROME;
         if (browser == BrowserType.FIREFOX) {
@@ -63,35 +56,29 @@ public class ApplicationManager {
 
         rd = new RemoteWebDriver(server,capabilities);
         */
-        rd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+//        rd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         //rd.manage().window().maximize();
+        rd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        rd.get("https://app.geteasyqa.com/users/sign_in");
         navHelper = new NavHelper(rd);
         sessionHelper = new SessionHelper(rd);
-        pageHelper = new PageHelper(rd);
         cardHelper = new CardHelper(rd);
         //вызываем логин с переданным паролем и логином
         sessionHelper.userLogin("acc4easyqatest@gmail.com", "acc4easyqatestQwe");
+//        rd.wait(10);
     }
 
     public void selectProject() {
         //кликаем по проекту
-        pageHelper.clickOnLink("test project 1");
+        navHelper.clickOnLink("test project 1");
     }
 
     public void stop() {
         rd.quit();
     }
 
-    public PageHelper getPageHelper() {
-        return pageHelper;
-    }
-
     public NavHelper getNavHelper() {
         return navHelper;
-    }
-
-    public SessionHelper getSessionHelper() {
-        return sessionHelper;
     }
 
     public CardHelper getCardHelper() {

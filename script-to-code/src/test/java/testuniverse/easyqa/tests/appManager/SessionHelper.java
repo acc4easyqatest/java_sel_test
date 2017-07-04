@@ -3,27 +3,20 @@ package testuniverse.easyqa.tests.appManager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
-public class SessionHelper {
-
-    private PageHelper pageHelper;
-    private WebDriver rd;
+public class SessionHelper extends BaseHelper {
 
     public SessionHelper(WebDriver rd) {
-        this.rd = rd;
-        pageHelper = new PageHelper(rd);
+        super(rd);
     }
 
     public void userLogin(String userLogin, String userPassword) {
 
-        rd.get("https://app.geteasyqa.com/users/sign_in");
-
         //вводим емейл
-        pageHelper.typeTextIntoElement("user_email", userLogin);
+        typeTextIntoElement("user_email", userLogin);
 
         //вводим пароль
-        pageHelper.typeTextIntoElement("user_password", userPassword);
+        typeTextIntoElement("user_password", userPassword);
 
         //нажимаем на кнопку войти
         rd.findElement(By.name("commit")).click();
