@@ -1,5 +1,6 @@
 package testuniverse.easyqa.tests.appManager;
 
+import com.beust.jcommander.Parameter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -8,10 +9,16 @@ import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
+    private final Properties properties;
     private  SessionHelper sessionHelper;
     private NavHelper navHelper;
     private CardHelper cardHelper;
@@ -19,30 +26,31 @@ public class ApplicationManager {
     WebDriver rd;
     ChromeOptions co;
     FirefoxProfile fp;
-    private String browser;
 
-    public ApplicationManager(String browser) {
+    @Parameter
+    public String browser;
+
+    public ApplicationManager(String browser)  {
 
         this.browser = browser;
+        properties = new Properties();
     }
 
-    /*public ApplicationManager(String browser) {
+    public void init() throws IOException {
+        String target = System.getProperty("target", "local");
+        // String browser = System.getProperty("browser", "browser");
 
-        this.browser = browser;
-    }*/
+        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
 
-    public void init() throws MalformedURLException, InterruptedException {
 
-        String browser = BrowserType.CHROME;
-        if (browser == BrowserType.FIREFOX) {
+        if (browser.equals(BrowserType.FIREFOX)) {
             rd = new FirefoxDriver();
-        }
-        else if (browser == BrowserType.CHROME){
+        } else if (browser.equals(BrowserType.CHROME)){
             co = new ChromeOptions();
             co.addArguments("--window-size=1800,1000");
             rd = new ChromeDriver(co);
         }
-        else if (browser == BrowserType.IE){
+        else if (browser.equals(BrowserType.IE)){
             rd = new InternetExplorerDriver();
         }
 
@@ -58,13 +66,14 @@ public class ApplicationManager {
         */
 //        rd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         //rd.manage().window().maximize();
-        rd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        rd.get("https://app.geteasyqa.com/users/sign_in");
+        rd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        rd.get(properties.getProperty("baseUrl"));
+       // rd.get("https://app.geteasyqa.com/users/sign_in");
         navHelper = new NavHelper(rd);
         sessionHelper = new SessionHelper(rd);
         cardHelper = new CardHelper(rd);
         //вызываем логин с переданным паролем и логином
-        sessionHelper.userLogin("acc4easyqatest@gmail.com", "acc4easyqatestQwe");
+        sessionHelper.userLogin(properties.getProperty("login"), properties.getProperty("pass"));
 //        rd.wait(10);
     }
 

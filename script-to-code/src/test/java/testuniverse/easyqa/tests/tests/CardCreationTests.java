@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 import testuniverse.easyqa.tests.objectModels.CardData;
 
 
-public class ScriptsToCode extends TestBase {
+public class CardCreationTests extends TestBase {
 
     @Test
     public void testCardCreation() {
