@@ -1,7 +1,11 @@
+import org.gradle.api.tasks.compile.JavaCompile
 import org.gradle.api.tasks.testing.Test
 
 apply plugin: 'java'
 
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
 repositories {
 	mavenCentral()
 }
@@ -22,5 +26,4 @@ task testCards (type : Test) {
 	if (project.hasProperty("target")) {
 		systemProperty 'target', "${target}"
 	}
-
 }
