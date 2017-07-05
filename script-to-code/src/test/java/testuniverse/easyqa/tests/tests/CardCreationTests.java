@@ -10,7 +10,7 @@ public class CardCreationTests extends TestBase {
     public void testCardCreation() {
 
         app.getNavHelper().gotoProjectsList();
-        app.selectProject();
+        app.getNavHelper().selectProject();
         app.getNavHelper().gotoBugTracker();
         //а тут не просто параметр, а сразу инициализация объекта класса карточка с данными
         app.getCardHelper().createCardOnTracker(new CardData("карточка 3", "описание карточки 3"));

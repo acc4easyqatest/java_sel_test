@@ -77,11 +77,6 @@ public class ApplicationManager {
 //        rd.wait(10);
     }
 
-    public void selectProject() {
-        //кликаем по проекту
-        navHelper.clickOnLink("test project 1");
-    }
-
     public void stop() {
         rd.quit();
     }

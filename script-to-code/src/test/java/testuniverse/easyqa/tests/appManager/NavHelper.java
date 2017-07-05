@@ -20,4 +20,9 @@ public class NavHelper extends BaseHelper {
         //кликаем по списку проектов
         clickOnLink("Мои Проекты");
     }
+
+    public void selectProject() {
+        //кликаем по проекту
+        clickOnLink("test project 1");
+    }
 }
