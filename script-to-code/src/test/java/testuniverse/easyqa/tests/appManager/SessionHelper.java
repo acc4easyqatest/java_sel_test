@@ -1,6 +1,7 @@
 package testuniverse.easyqa.tests.appManager;
 
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -10,6 +11,7 @@ public class SessionHelper extends BaseHelper {
         super(rd);
     }
 
+    @Step
     public void userLogin(String userLogin, String userPassword) {
 
         //вводим емейл

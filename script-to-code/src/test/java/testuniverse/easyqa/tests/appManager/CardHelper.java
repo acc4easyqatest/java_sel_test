@@ -1,6 +1,7 @@
 package testuniverse.easyqa.tests.appManager;
 
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import testuniverse.easyqa.tests.objectModels.CardData;
@@ -11,6 +12,7 @@ public class CardHelper extends BaseHelper {
         super(rd);
     }
 
+    @Step
     public void createCardOnTracker(CardData cardData) {
         //создаем карточку
         initCardCreation();
@@ -27,6 +29,7 @@ public class CardHelper extends BaseHelper {
         rd.findElement(By.name("commit")).click();
     }
 
+    @Step
     public void initCardCreation() {
         //создаем карточку
         clickOnLink("Создать карточку");
