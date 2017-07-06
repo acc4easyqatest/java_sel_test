@@ -1,6 +1,7 @@
 package testuniverse.easyqa.tests.appManager;
 
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +17,7 @@ public class BaseHelper {
         this.rd = rd;
     }
 
+    @Step
     public void clickAtSelectItem(String selectId, String selectItem) {
         WebElement selectList = new RemoteWebElement();
         selectList = rd.findElement(By.id(selectId));
@@ -23,6 +25,7 @@ public class BaseHelper {
         selectList.findElement(By.linkText(selectItem)).click();
     }
 
+    @Step
     public void clickOnLink(String linkText) {
         Actions actions = new Actions(rd);
         WebElement el = rd.findElement(By.linkText(linkText));
@@ -31,6 +34,7 @@ public class BaseHelper {
       //  rd.findElement(By.linkText(linkText)).click();
     }
 
+    @Step
     public void typeTextIntoElement(String inputElementId, String textToInput) {
 
         rd.findElement(By.id(inputElementId)).click();

@@ -1,5 +1,6 @@
 package testuniverse.easyqa.tests.tests;
 
+import io.qameta.allure.Step;
 import org.testng.annotations.Test;
 import testuniverse.easyqa.tests.objectModels.CardData;
 
