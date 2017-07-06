@@ -1,9 +1,10 @@
 package testuniverse.easyqa.tests.tests;
 
+import io.qameta.allure.Attachment;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import ru.yandex.qatools.allure.annotations.Attachment;
+
 import testuniverse.easyqa.tests.appManager.ApplicationManager;
 
 /**
